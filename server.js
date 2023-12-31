@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require("path");
 const app = express();
 const port = 2025;
 app.use(express.json());
@@ -20,3 +21,7 @@ db.once("open", function () {
 app.listen(port, () => {
   console.log("App start listening on port " + port);
 });
+app.use(express.static(path.join(__dirname, "build")));
+app.get("*", (req, res) =>
+  res.sendFile(path.join(__dirname, "build/index.html"))
+);
