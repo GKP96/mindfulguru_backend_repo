@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
 const app = express();
-const port = 2025;
+const port = process.env.PORT || 2025;
 app.use(express.json());
 app.use(cors());
 const signupRouter = require("./routers/signup.router");
